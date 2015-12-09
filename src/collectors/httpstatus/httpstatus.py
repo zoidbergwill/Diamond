@@ -51,7 +51,7 @@ class HttpStatusCollector(Collector):
         for nickname, url in self.urls.iteritems():
             self.log.debug("collecting %s", str(url))
             try:
-                response = requests.get(url)
+                response = requests.head(url)
 
                 self.publish_gauge(
                     '{0}.is_alive'.format(nickname), response.ok)
